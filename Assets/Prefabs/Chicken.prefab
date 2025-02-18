@@ -60,13 +60,13 @@ MonoBehaviour:
   maxHunger: 20
   hunger: 20
   hungerGainOnEat: 5
-  hungerConsumption: 0
-  speed: 0
+  hungerConsumption: 1
+  speed: 3.5
   foodTrans: {fileID: 0}
   foodSpotted: 0
   ableToBirth: 0
   geneMutationChance: 5
-  chickenClone: {fileID: 2169094634085108418}
+  chickenClone: {fileID: 0}
   chickenParent: {fileID: 5438933315372582792, guid: 47089eddf5aa6fc4691a710db0cfc017, type: 3}
 --- !u!54 &901165388989536423
 Rigidbody:

@@ -17,32 +17,46 @@ public class ChickenVision : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if(!isTargeting)
+        if(chickenScript != null)
         {
-            int r = Random.Range(1, 100);
-            if (other.tag == "food" && r < chickenScript.chanceForFood)
+            if (!isTargeting)
             {
-                Debug.Log("found food");
-                chickenScript.foodSpotted = true;
-                chickenScript.foodTrans = other.transform;
-            }
-            else if(other.tag == "chicken")
-            {
-                if(other.GetComponent<Chicken>().ableToBirth && !chickenScript.ableToBirth)
+                float r = Random.Range(1, 101);
+                if (other.CompareTag("food") && r < chickenScript.chanceForFood)
                 {
-                    chickenScript.foundMate = true;
-                    chickenScript.mateTrans = other.transform;
+                    chickenScript.foodSpotted = true;
+                    chickenScript.foodTrans = other.transform;
                 }
-                else if(!other.GetComponent<Chicken>().ableToBirth && chickenScript.ableToBirth)
+                else if (other.CompareTag("chicken"))
                 {
-                    chickenScript.foundMate = true;
-                    chickenScript.mateTrans = chicken.transform;
-                    chickenScript.wait = true;
-                }
-                
+                    if (other.GetComponent<Chicken>() != null)
+                    {
+                        if (other.GetComponent<Chicken>().ableToBirth && !chickenScript.ableToBirth)
+                        {
+                            chickenScript.foundMate = true;
+                            chickenScript.mateTrans = other.transform;
+                        }
+                        else if (!other.GetComponent<Chicken>().ableToBirth && chickenScript.ableToBirth)
+                        {
+                            chickenScript.foundMate = true;
+                            chickenScript.mateTrans = chicken.transform;
+                            chickenScript.wait = true;
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("other chicken script is null");
+                    }
 
+
+                }
             }
         }
+        else
+        {
+            Debug.LogError("chicken-script is null");
+        }
+        
         
     }
 

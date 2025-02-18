@@ -111,7 +111,7 @@ public class Chicken : MonoBehaviour
         if (other.tag == "food")
         {
             visionScript.isTargeting = false;
-            Debug.Log("chicken trigger");
+            //Debug.Log("chicken trigger");
             Destroy(other.gameObject);
             hunger += hungerGainOnEat;
             if (hunger > maxHunger)

@@ -168,6 +168,10 @@ PrefabInstance:
       propertyPath: visionObj
       value: 
       objectReference: {fileID: 9058373687709983218}
+    - target: {fileID: 2062616494828041421, guid: 48d4f39abc169da41a826d6bfcffcba4, type: 3}
+      propertyPath: chickenClone
+      value: 
+      objectReference: {fileID: 276753730684159332}
     - target: {fileID: 2169094634085108418, guid: 48d4f39abc169da41a826d6bfcffcba4, type: 3}
       propertyPath: m_Name
       value: Chicken

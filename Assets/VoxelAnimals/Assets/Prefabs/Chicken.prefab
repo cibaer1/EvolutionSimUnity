@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e082e22c8a931c64db5dea30f38a3765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 2492292375530042797}
   viewRadius: 10
   maxHealth: 10
   health: 10

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5098142993015790165}
   m_Layer: 0
   m_Name: Chicken
-  m_TagString: Untagged
+  m_TagString: chicken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,15 +48,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e082e22c8a931c64db5dea30f38a3765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  visionObj: {fileID: 0}
   agent: {fileID: 7922766745082311503}
+  foundMate: 0
+  wait: 0
+  mateTrans: {fileID: 0}
   viewRadius: 10
+  chanceForFood: 40
   maxHealth: 10
   health: 10
   maxHunger: 20
   hunger: 20
   hungerGainOnEat: 5
+  hungerConsumption: 0
+  speed: 0
   foodTrans: {fileID: 0}
   foodSpotted: 0
+  ableToBirth: 0
+  geneMutationChance: 5
+  chickenClone: {fileID: 2169094634085108418}
+  chickenParent: {fileID: 5438933315372582792, guid: 47089eddf5aa6fc4691a710db0cfc017, type: 3}
 --- !u!54 &901165388989536423
 Rigidbody:
   m_ObjectHideFlags: 0

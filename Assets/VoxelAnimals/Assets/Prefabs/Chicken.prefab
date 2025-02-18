@@ -353,10 +353,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4292928448873590}
+  - component: {fileID: 198312679491295585}
   - component: {fileID: 95970164997226778}
   - component: {fileID: 54011750179816588}
   - component: {fileID: 65706843018012252}
-  - component: {fileID: 198312679491295585}
   - component: {fileID: 2492292375530042797}
   m_Layer: 0
   m_Name: Chicken
@@ -385,6 +385,24 @@ Transform:
   - {fileID: 2165904924336653150}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -101.42901, z: 0}
+--- !u!114 &198312679491295585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969419073538870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e082e22c8a931c64db5dea30f38a3765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  viewRadius: 10
+  maxHealth: 10
+  health: 10
+  maxHunger: 20
+  hunger: 20
 --- !u!95 &95970164997226778
 Animator:
   serializedVersion: 7
@@ -455,20 +473,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.7, z: 1}
   m_Center: {x: 0, y: 0.87, z: 0}
---- !u!114 &198312679491295585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969419073538870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e082e22c8a931c64db5dea30f38a3765, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  viewRadius: 10
 --- !u!195 &2492292375530042797
 NavMeshAgent:
   m_ObjectHideFlags: 0

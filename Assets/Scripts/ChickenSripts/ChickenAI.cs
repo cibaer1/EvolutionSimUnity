@@ -1,8 +1,9 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Chicken : MonoBehaviour
+public class ChickenAI : MonoBehaviour
 {
     [SerializeField] GameObject visionObj;
     public NavMeshAgent agent;
@@ -19,22 +20,25 @@ public class Chicken : MonoBehaviour
     public float hungerGainOnEat;
     public float hungerConsumption;
     public float speed;
+    public float birthWait;
     //end of block genes
 
+    private float birthCooldown;
     public Transform foodTrans;
     public bool foodSpotted;
     public bool ableToBirth;
     bool isFoodDistSet;
-    ChickenVision visionScript;
+    [SerializeField] ChickenVision visionScript;
     [SerializeField] int geneMutationChance;
     [SerializeField] GameObject chickenClone;
     [SerializeField] GameObject chickenParent;
 
     private void Start()
     {
-        visionScript = visionObj.GetComponent<ChickenVision>();
+        
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
+        birthCooldown = 10f;
         health = maxHealth;
         hunger = maxHunger;
         if (Random.Range(1, 3) == 1)
@@ -65,13 +69,12 @@ public class Chicken : MonoBehaviour
 
             }
         }
-        else if (!wait && foodSpotted && isFoodDistSet == false && foodTrans != null) //if food go there
+        else if (!wait && foodSpotted && foodTrans != null) //if food go there
         {
             visionScript.isTargeting = true;
             agent.SetDestination(new Vector3(foodTrans.position.x, -0.5f, foodTrans.position.z));
-            isFoodDistSet = true;
         }
-        else if (foundMate && mateTrans != null && !ableToBirth) //if mate found and unable to birth go to mate
+        else if (!wait && foundMate && mateTrans != null && !ableToBirth) //if mate found and unable to birth go to mate
         {
             visionScript.isTargeting = true;
             Debug.Log("mate found");
@@ -101,6 +104,7 @@ public class Chicken : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             hunger -= hungerConsumption;
+            birthCooldown--;
             if (hunger < 1f) { Destroy(visionObj); Destroy(transform.parent.gameObject); }
         }
 
@@ -110,6 +114,7 @@ public class Chicken : MonoBehaviour
 
         if (other.tag == "food")
         {
+            
             visionScript.isTargeting = false;
             //Debug.Log("chicken trigger");
             Destroy(other.gameObject);
@@ -121,13 +126,10 @@ public class Chicken : MonoBehaviour
         }
         else if (other.tag == "chicken")
         {
-            Chicken otherScript = other.GetComponent<Chicken>();
-            if (!ableToBirth)
+            ChickenAI otherScript = other.GetComponent<ChickenAI>();
+            if (ableToBirth && birthCooldown < 1f && !otherScript.ableToBirth)
             {
                 wait = false;
-            }
-            else
-            {
                 birth(otherScript.viewRadius, otherScript.chanceForFood, otherScript.maxHealth, otherScript.maxHunger, otherScript.hungerGainOnEat, otherScript.hungerConsumption, otherScript.speed);
             }
         }
@@ -175,7 +177,7 @@ public class Chicken : MonoBehaviour
 
         //the actual "birth"
         GameObject babyChicken = Instantiate(chickenClone, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity, chickenParent.transform);
-        Chicken babyScript = babyChicken.GetComponent<Chicken>();
+        ChickenAI babyScript = babyChicken.GetComponent<ChickenAI>();
 
         babyScript.viewRadius = _viewRadius;
         babyScript.chanceForFood = _chanceForFood;
@@ -186,6 +188,7 @@ public class Chicken : MonoBehaviour
         babyScript.speed = _speed;
 
         hunger -= 5;
+        birthCooldown = birthWait;
         Debug.Log("child born");
     }
 

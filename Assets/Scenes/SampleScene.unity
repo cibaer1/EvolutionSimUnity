@@ -318,9 +318,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15cec8989c3f29f4d9039a1429161ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfFood: 15
-  initialChickens: 15
-  mapSize: 90
+  numberOfFood: 40
+  initialChickens: 40
+  mapSize: 190
   _bush: {fileID: 2229492743333010427, guid: 9c2e89039c24beb4a89d978db6c83c19, type: 3}
   _bushHolder: {fileID: 470618498}
   _chicken: {fileID: 276753730684159332, guid: 632d6bb15829cce4b9d18cd2058dea93, type: 3}
@@ -645,7 +645,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.12, z: 0}
-  m_LocalScale: {x: 100, y: 1, z: 100}
+  m_LocalScale: {x: 200, y: 1, z: 200}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1935533501}

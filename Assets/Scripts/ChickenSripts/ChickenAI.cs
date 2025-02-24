@@ -21,8 +21,10 @@ public class ChickenAI : MonoBehaviour
     public float hungerConsumption;
     public float speed;
     public float birthWait;
+    public int maxAge;
     //end of block genes
 
+    int age;
     public float birthCooldown;
     public Transform foodTrans;
     public bool foodSpotted;
@@ -107,7 +109,9 @@ public class ChickenAI : MonoBehaviour
             yield return new WaitForSeconds(1f);
             hunger -= hungerConsumption;
             birthCooldown--;
+            age++;
             if (hunger < 1f) { Destroy(visionObj); Destroy(transform.parent.gameObject); }
+            if(age > maxAge) { Destroy(visionObj); Destroy(transform.parent.gameObject); }
         }
 
     }

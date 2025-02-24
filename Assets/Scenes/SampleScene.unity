@@ -238,8 +238,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.18670315, y: 0.0056000953, z: -0.0010522903, w: -0.9823999}
-  m_LocalPosition: {x: 4.7979865, y: 25.023802, z: -72.23031}
+  m_LocalRotation: {x: 0.67855686, y: 0.003697609, z: -0.0034882175, w: 0.7345303}
+  m_LocalPosition: {x: -3.7100492, y: 87.63632, z: -9.042569}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -320,12 +320,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfFood: 15
   initialChickens: 15
-  mapSize: 100
+  mapSize: 90
   _bush: {fileID: 2229492743333010427, guid: 9c2e89039c24beb4a89d978db6c83c19, type: 3}
   _bushHolder: {fileID: 470618498}
   _chicken: {fileID: 276753730684159332, guid: 632d6bb15829cce4b9d18cd2058dea93, type: 3}
   _chickenHolder: {fileID: 844623230}
-  foodSpawnDelay: 5
+  foodSpawnDelay: 4
 --- !u!4 &340154767
 Transform:
   m_ObjectHideFlags: 0

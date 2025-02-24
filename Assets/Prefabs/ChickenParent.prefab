@@ -134,7 +134,7 @@ MonoBehaviour:
   foundMate: 0
   wait: 0
   mateTrans: {fileID: 0}
-  viewRadius: 10
+  viewRadius: 15
   chanceForFood: 0
   maxHealth: 20
   health: 20
@@ -144,12 +144,13 @@ MonoBehaviour:
   hungerConsumption: 1
   speed: 3
   birthWait: 0
+  maxAge: 40
   birthCooldown: 0
   foodTrans: {fileID: 0}
   foodSpotted: 0
   ableToBirth: 0
   births: 0
-  maxBirths: 2
+  maxBirths: 10
   visionScript: {fileID: 1213534986552423788}
   geneMutationChance: 5
   chickenClone: {fileID: 276753730684159332}
@@ -206,7 +207,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7740031, z: -0, w: 0.63318187}
   m_LocalPosition: {x: 0.4166806, y: -0.2974648, z: -0.9759674}
-  m_LocalScale: {x: 10, y: 0.26, z: 10}
+  m_LocalScale: {x: 15, y: 0.26, z: 15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6084421949890832611}

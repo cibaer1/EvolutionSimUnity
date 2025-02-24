@@ -143,9 +143,13 @@ MonoBehaviour:
   hungerGainOnEat: 5
   hungerConsumption: 1
   speed: 3
+  birthWait: 0
+  birthCooldown: 0
   foodTrans: {fileID: 0}
   foodSpotted: 0
   ableToBirth: 0
+  births: 0
+  maxBirths: 2
   visionScript: {fileID: 1213534986552423788}
   geneMutationChance: 5
   chickenClone: {fileID: 276753730684159332}

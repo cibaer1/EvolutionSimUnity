@@ -31,22 +31,21 @@ public class ChickenVision : MonoBehaviour
                 chickenScript.foodSpotted = true;
                 chickenScript.foodTrans = other.transform;
             }
-            else if (other.CompareTag("chicken"))
+            else if (other.CompareTag("chicken") && !chickenScript.ableToBirth)
             {
                 if (other.GetComponent<ChickenAI>() != null)
                 {
-                    if (other.GetComponent<ChickenAI>().ableToBirth && !chickenScript.ableToBirth)
+                    ChickenAI otherAI = other.GetComponent<ChickenAI>();
+                    
+                    if (otherAI.ableToBirth && otherAI.birthCooldown < 1f && otherAI.births < otherAI.maxBirths)
                     {
                         chickenScript.foundMate = true;
                         chickenScript.mateTrans = other.transform;
                         Debug.Log("mateFound");
+                        other.GetComponent<ChickenAI>().wait = true;
+                        other.GetComponent<ChickenAI>().foundMate = true;
                     }
-                    else if (!other.GetComponent<ChickenAI>().ableToBirth && chickenScript.ableToBirth)
-                    {
-                        chickenScript.foundMate = true;
-                        chickenScript.mateTrans = chicken.transform;
-                        chickenScript.wait = true;
-                    }
+                    
                 }
                 else
                 {

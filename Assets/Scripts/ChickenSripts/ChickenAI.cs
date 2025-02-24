@@ -23,11 +23,13 @@ public class ChickenAI : MonoBehaviour
     public float birthWait;
     //end of block genes
 
-    private float birthCooldown;
+    public float birthCooldown;
     public Transform foodTrans;
     public bool foodSpotted;
     public bool ableToBirth;
     bool isFoodDistSet;
+    public int births;
+    public int maxBirths;
     [SerializeField] ChickenVision visionScript;
     [SerializeField] int geneMutationChance;
     [SerializeField] GameObject chickenClone;
@@ -124,11 +126,12 @@ public class ChickenAI : MonoBehaviour
                 hunger = maxHunger;
             }
         }
-        else if (other.tag == "chicken")
+        else if (other.tag == "chicken" && foundMate == true)
         {
             ChickenAI otherScript = other.GetComponent<ChickenAI>();
-            if (ableToBirth && birthCooldown < 1f && !otherScript.ableToBirth)
+            if (ableToBirth && birthCooldown < 1f && !otherScript.ableToBirth && births < maxBirths)
             {
+                births++;
                 wait = false;
                 birth(otherScript.viewRadius, otherScript.chanceForFood, otherScript.maxHealth, otherScript.maxHunger, otherScript.hungerGainOnEat, otherScript.hungerConsumption, otherScript.speed);
             }
@@ -176,8 +179,8 @@ public class ChickenAI : MonoBehaviour
         }
 
         //the actual "birth"
-        GameObject babyChicken = Instantiate(chickenClone, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity, chickenParent.transform);
-        ChickenAI babyScript = babyChicken.GetComponent<ChickenAI>();
+        GameObject babyChicken = Instantiate(chickenClone, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity); //in chickenHolder
+        ChickenAI babyScript = babyChicken.GetComponentInChildren<ChickenAI>();
 
         babyScript.viewRadius = _viewRadius;
         babyScript.chanceForFood = _chanceForFood;

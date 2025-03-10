@@ -141,6 +141,7 @@ public class ChickenAI : MonoBehaviour
             }
         }
     }
+    #region birth
     void birth(float otherViewRadius, float otherChanceForFood, float otherMaxHealth, float otherMaxHunger, float otherHungerGainOnEat, float otherHungerConsumption, float otherSpeed) //prefix _ means temp here
     {
         float _viewRadius;
@@ -198,6 +199,7 @@ public class ChickenAI : MonoBehaviour
         birthCooldown = birthWait;
         Debug.Log("child born");
     }
+    #endregion
 
 }
 

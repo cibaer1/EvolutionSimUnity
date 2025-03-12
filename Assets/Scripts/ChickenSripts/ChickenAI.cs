@@ -177,7 +177,7 @@ public class ChickenAI : MonoBehaviour
         //if (Random.Range(1, 101) < geneMutationChance) { _hungerConsumption += Random.Range(-5, 5); }
         if(Random.Range(1, 101) < geneMutationChance) 
         {
-            float r = Random.Range(-5, 5);
+            float r = Random.Range(-3, 3);
             _speed += r;
             _hungerConsumption += r;
 

@@ -145,14 +145,14 @@ MonoBehaviour:
   speed: 3
   birthWait: 0
   maxAge: 40
-  birthCooldown: 0
+  birthCooldown: 5
   foodTrans: {fileID: 0}
   foodSpotted: 0
   ableToBirth: 0
   births: 0
   maxBirths: 10
   visionScript: {fileID: 1213534986552423788}
-  geneMutationChance: 5
+  geneMutationChance: 15
   chickenClone: {fileID: 276753730684159332}
   chickenParent: {fileID: 5438933315372582792, guid: 47089eddf5aa6fc4691a710db0cfc017, type: 3}
 --- !u!195 &5738806999522767102

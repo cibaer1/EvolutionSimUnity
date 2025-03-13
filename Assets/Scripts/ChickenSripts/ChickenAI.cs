@@ -81,7 +81,7 @@ public class ChickenAI : MonoBehaviour
         else if (!wait && foundMate && mateTrans != null && !ableToBirth) //if mate found and unable to birth go to mate
         {
             visionScript.isTargeting = true;
-            Debug.Log("mate found");
+            //Debug.Log("mate found");
             agent.SetDestination(new Vector3(mateTrans.position.x, -0.5f, mateTrans.position.z));
         }
         else if (!wait && dist < 0.5f) //if all else fails return to random
@@ -177,6 +177,7 @@ public class ChickenAI : MonoBehaviour
         //if (Random.Range(1, 101) < geneMutationChance) { _hungerConsumption += Random.Range(-5, 5); }
         if(Random.Range(1, 101) < geneMutationChance) 
         {
+            Debug.Log("geneModified");
             float r = Random.Range(-3, 3);
             _speed += r;
             _hungerConsumption += r;
@@ -197,7 +198,7 @@ public class ChickenAI : MonoBehaviour
 
         hunger -= 5;
         birthCooldown = birthWait;
-        Debug.Log("child born");
+        //Debug.Log("child born");
     }
     #endregion
 

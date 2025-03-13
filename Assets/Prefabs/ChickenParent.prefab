@@ -135,24 +135,24 @@ MonoBehaviour:
   wait: 0
   mateTrans: {fileID: 0}
   viewRadius: 20
-  chanceForFood: 0
+  chanceForFood: 5
   maxHealth: 20
   health: 20
-  maxHunger: 20
+  maxHunger: 30
   hunger: 20
-  hungerGainOnEat: 5
-  hungerConsumption: 1
+  hungerGainOnEat: 8
+  hungerConsumption: 0.6
   speed: 3
-  birthWait: 0
-  maxAge: 40
-  birthCooldown: 5
+  birthWait: 3
+  maxAge: 70
+  birthCooldown: 0
   foodTrans: {fileID: 0}
   foodSpotted: 0
   ableToBirth: 0
   births: 0
-  maxBirths: 10
+  maxBirths: 15
   visionScript: {fileID: 1213534986552423788}
-  geneMutationChance: 15
+  geneMutationChance: 30
   chickenClone: {fileID: 276753730684159332}
   chickenParent: {fileID: 5438933315372582792, guid: 47089eddf5aa6fc4691a710db0cfc017, type: 3}
 --- !u!195 &5738806999522767102

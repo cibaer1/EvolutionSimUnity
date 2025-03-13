@@ -7,9 +7,9 @@ public class ChickenAI : MonoBehaviour
 {
     [SerializeField] GameObject visionObj;
     public NavMeshAgent agent;
-    public bool foundMate;
-    public bool wait;
-    public Transform mateTrans;
+    [HideInInspector]public bool foundMate;
+    [HideInInspector] public bool wait;
+    [HideInInspector] public Transform mateTrans;
     //start of block genes
     public float viewRadius;
     public float chanceForFood; //determines the chance to choose food over mating in chickenVision script
@@ -25,11 +25,11 @@ public class ChickenAI : MonoBehaviour
     //end of block genes
 
     int age;
-    public float birthCooldown;
-    public Transform foodTrans;
-    public bool foodSpotted;
+    [HideInInspector] public float birthCooldown;
+    [HideInInspector] public Transform foodTrans;
+    [HideInInspector] public bool foodSpotted;
     public bool ableToBirth;
-    bool isFoodDistSet;
+    [HideInInspector] bool isFoodDistSet;
     public int births;
     public int maxBirths;
     [SerializeField] ChickenVision visionScript;
@@ -169,18 +169,18 @@ public class ChickenAI : MonoBehaviour
         else { _speed = otherSpeed; }
 
         //genetic mutations
-        //if (Random.Range(1, 101) < geneMutationChance) { _viewRadius += Random.Range(-5, 5); }
-        //if (Random.Range(1, 101) < geneMutationChance) { _chanceForFood += Random.Range(-5, 5); }
-        //if (Random.Range(1, 101) < geneMutationChance) { _maxHealth += Random.Range(-5, 5); }
-        //if (Random.Range(1, 101) < geneMutationChance) { _maxHunger += Random.Range(-5, 5); }
-        //if (Random.Range(1, 101) < geneMutationChance) { _hungerGainOnEat += Random.Range(-5, 5); }
-        //if (Random.Range(1, 101) < geneMutationChance) { _hungerConsumption += Random.Range(-5, 5); }
+        //if (Random.Range(1, 101) < geneMutationChance) { _viewRadius += Random.Range(-5, 6); }
+        //if (Random.Range(1, 101) < geneMutationChance) { _chanceForFood += Random.Range(-5, 6); }
+        //if (Random.Range(1, 101) < geneMutationChance) { _maxHealth += Random.Range(-5, 6); }
+        //if (Random.Range(1, 101) < geneMutationChance) { _maxHunger += Random.Range(-5, 6); }
+        //if (Random.Range(1, 101) < geneMutationChance) { _hungerGainOnEat += Random.Range(-5, 6); }
+        //if (Random.Range(1, 101) < geneMutationChance) { _hungerConsumption += Random.Range(-5, 6); }
         if(Random.Range(1, 101) < geneMutationChance) 
         {
             Debug.Log("geneModified");
-            float r = Random.Range(-3, 3);
+            float r = Random.Range(-3, 4);
             _speed += r;
-            _hungerConsumption += r;
+            //_hungerConsumption += r;
 
         }
 

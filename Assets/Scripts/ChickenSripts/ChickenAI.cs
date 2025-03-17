@@ -24,6 +24,7 @@ public class ChickenAI : MonoBehaviour
     public int maxAge;
     //end of block genes
 
+    int waitFailsave = 5;
     int age;
     [HideInInspector] public float birthCooldown;
     [HideInInspector] public Transform foodTrans;
@@ -112,6 +113,8 @@ public class ChickenAI : MonoBehaviour
             age++;
             if (hunger < 1f) { Destroy(visionObj); Destroy(transform.parent.gameObject); }
             if(age > maxAge) { Destroy(visionObj); Destroy(transform.parent.gameObject); }
+            if(wait && waitFailsave < 1) { wait = false; waitFailsave = 5; }
+            else if(wait) { waitFailsave--; }
         }
 
     }

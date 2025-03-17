@@ -19,6 +19,13 @@ public class FoodSpawn : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if(Input.GetKey(KeyCode.F))
+        {
+            Screen.fullScreen = !Screen.fullScreen;
+        }
+    }
     IEnumerator spawnFood()
     {
         while(true)

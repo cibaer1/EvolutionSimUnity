@@ -134,15 +134,15 @@ MonoBehaviour:
   foundMate: 0
   wait: 0
   mateTrans: {fileID: 0}
-  viewRadius: 20
+  viewRadius: 25
   chanceForFood: 5
   maxHealth: 20
   health: 20
   maxHunger: 30
   hunger: 20
-  hungerGainOnEat: 8
-  hungerConsumption: 0.6
-  speed: 3
+  hungerGainOnEat: 10
+  hungerConsumption: 0.5
+  speed: 4
   birthWait: 3
   maxAge: 70
   birthCooldown: 0
@@ -207,7 +207,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7740031, z: -0, w: 0.63318187}
   m_LocalPosition: {x: 0.4166806, y: -0.2974648, z: -0.9759674}
-  m_LocalScale: {x: 20, y: 0.26, z: 20}
+  m_LocalScale: {x: 25, y: 0.26, z: 25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6084421949890832611}

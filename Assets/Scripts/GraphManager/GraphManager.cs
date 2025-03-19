@@ -55,7 +55,7 @@ public class GraphManager : MonoBehaviour
             {
                 graph.UpdateData("serie0", i - 1, height[i]);
                 height[i] = 0;
-                Debug.Log("Updateting graph");
+                //Debug.Log("Updateting graph");
             }
             yield return new WaitForSeconds(0.5f);
         }

@@ -12,7 +12,6 @@ public class ChickenAI : MonoBehaviour
     [HideInInspector] public Transform mateTrans;
     //start of block genes
     public float viewRadius;
-    public float chanceForFood; //determines the chance to choose food over mating in chickenVision script
     public float maxHealth;
     public float health;
     public float maxHunger;
@@ -37,13 +36,15 @@ public class ChickenAI : MonoBehaviour
     [SerializeField] int geneMutationChance;
     [SerializeField] GameObject chickenClone;
     [SerializeField] GameObject chickenParent;
+    GameManager gameManagerScript;
+    float degenTimer;
 
     private void Start()
     {
-        
+        gameManagerScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
-        birthCooldown = 10f;
+        birthCooldown = 5f;
         health = maxHealth;
         hunger = maxHunger;
         if (Random.Range(1, 3) == 1)
@@ -51,19 +52,31 @@ public class ChickenAI : MonoBehaviour
             ableToBirth = true;
         }
 
-        StartCoroutine(passiveDegen());
+        //StartCoroutine(passiveDegen());
 
     }
     private void Update()
     {
         Movement();
 
+        degenTimer += Time.deltaTime;
+        if(degenTimer >= 1f)
+        {
+            degenTimer = 0f;
+            hunger -= hungerConsumption;
+            birthCooldown--;
+            age++;
+            if (hunger < 1f) { gameManagerScript.hungerDeath(); Destroy(visionObj); Destroy(transform.parent.gameObject); }
+            if (age > maxAge) { Destroy(visionObj); Destroy(transform.parent.gameObject); }
+            if (wait && waitFailsave < 1) { wait = false; waitFailsave = 5; }
+            else if (wait) { waitFailsave--; }
+        }
     }
 
     void Movement()
     {
         float dist = Vector3.Distance(agent.destination, transform.position);
-        if (!foodSpotted && !foundMate && !wait) //set random dest
+        if (!foodSpotted && !foundMate && !wait && Random.Range(0, 100) < 20) //set random dest
         {
             if (isFoodDistSet == true) { isFoodDistSet = false; }
             visionScript.isTargeting = true;
@@ -111,7 +124,7 @@ public class ChickenAI : MonoBehaviour
             hunger -= hungerConsumption;
             birthCooldown--;
             age++;
-            if (hunger < 1f) { Destroy(visionObj); Destroy(transform.parent.gameObject); }
+            if (hunger < 1f) { gameManagerScript.hungerDeath(); Destroy(visionObj); Destroy(transform.parent.gameObject); }
             if(age > maxAge) { Destroy(visionObj); Destroy(transform.parent.gameObject); }
             if(wait && waitFailsave < 1) { wait = false; waitFailsave = 5; }
             else if(wait) { waitFailsave--; }
@@ -140,15 +153,14 @@ public class ChickenAI : MonoBehaviour
             {
                 births++;
                 wait = false;
-                birth(otherScript.viewRadius, otherScript.chanceForFood, otherScript.maxHealth, otherScript.maxHunger, otherScript.hungerGainOnEat, otherScript.hungerConsumption, otherScript.speed);
+                birth(otherScript.viewRadius, otherScript.maxHealth, otherScript.maxHunger, otherScript.hungerGainOnEat, otherScript.hungerConsumption, otherScript.speed);
             }
         }
     }
     #region birth
-    void birth(float otherViewRadius, float otherChanceForFood, float otherMaxHealth, float otherMaxHunger, float otherHungerGainOnEat, float otherHungerConsumption, float otherSpeed) //prefix _ means temp here
+    void birth(float otherViewRadius, float otherMaxHealth, float otherMaxHunger, float otherHungerGainOnEat, float otherHungerConsumption, float otherSpeed) //prefix _ means temp here
     {
         float _viewRadius;
-        float _chanceForFood; //determines the chance to choose food over mating in chickenVision script
         float _maxHealth;
         float _maxHunger;
         float _hungerGainOnEat;
@@ -158,8 +170,6 @@ public class ChickenAI : MonoBehaviour
         //get base genetics from mom/dad
         if(Random.Range(1, 3) == 1) { _viewRadius = viewRadius; }
         else { _viewRadius = otherViewRadius; }
-        if (Random.Range(1, 3) == 1) { _chanceForFood = chanceForFood; }
-        else { _chanceForFood = otherChanceForFood; }
         if (Random.Range(1, 3) == 1) { _maxHealth = maxHealth; }
         else { _maxHealth = otherMaxHealth; }
         if (Random.Range(1, 3) == 1) { _maxHunger = maxHunger; }
@@ -188,11 +198,10 @@ public class ChickenAI : MonoBehaviour
         }
 
         //the actual "birth"
-        GameObject babyChicken = Instantiate(chickenClone, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity); //in chickenHolder
+        GameObject babyChicken = Instantiate(chickenClone, new Vector3(transform.position.x + Random.Range(-1.5f, 1.6f), transform.position.y, transform.position.z + Random.Range(-1.5f, 1.6f)), Quaternion.identity); //in chickenHolder
         ChickenAI babyScript = babyChicken.GetComponentInChildren<ChickenAI>();
 
         babyScript.viewRadius = _viewRadius;
-        babyScript.chanceForFood = _chanceForFood;
         babyScript.maxHealth = _maxHealth;
         babyScript.maxHunger = _maxHunger;
         babyScript.hungerGainOnEat = _hungerGainOnEat;

@@ -24,8 +24,7 @@ public class ChickenVision : MonoBehaviour
         if(chickenScript != null)
         {
             
-            float r = Random.Range(1, 101);
-            if (other.CompareTag("food") && r < chickenScript.chanceForFood)
+            if (other.CompareTag("food") && chickenScript.hunger < chickenScript.maxHunger * 0.5f)
             {
                 Debug.Log("r");
                 chickenScript.foodSpotted = true;

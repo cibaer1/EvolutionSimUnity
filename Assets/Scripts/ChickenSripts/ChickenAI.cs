@@ -107,14 +107,15 @@ public class ChickenAI : MonoBehaviour
     }
     void setRandomDest()
     {
-        float x = Random.Range(viewRadius * -0.5f, viewRadius * 0.5f);
-        float y = Random.Range(viewRadius * -0.5f, viewRadius * 0.5f);
-        Vector3 randomDest = new Vector3(transform.position.x - x, 0.51f, transform.position.y - y);
+        Vector3 randomDirection = Random.insideUnitSphere * viewRadius;
+
+        randomDirection += transform.position;
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomDest, out hit, 5.0f, NavMesh.AllAreas))
-        {
-            agent.SetDestination(randomDest);
-        }
+        NavMesh.SamplePosition(randomDirection, out hit, viewRadius, 1);
+        Vector3 finalPosition = hit.position;
+        agent.SetDestination(finalPosition);
+
+        
     }
     IEnumerator passiveDegen()
     {
@@ -210,6 +211,7 @@ public class ChickenAI : MonoBehaviour
 
         hunger -= 5;
         birthCooldown = birthWait;
+        gameManagerScript.chickenBirth();
         //Debug.Log("child born");
     }
     #endregion

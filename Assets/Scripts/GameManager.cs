@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
     public float globalSpeed = 1f;
     [SerializeField] Text TimeText;
     [SerializeField] Text DeathsToHungerTxt;
+    [SerializeField] Text birthsTxt;
     int time;
     int deathsToHunger;
+    int births;
     
 
     private void Start()
@@ -23,6 +25,11 @@ public class GameManager : MonoBehaviour
     {
         deathsToHunger++;
         DeathsToHungerTxt.text = "Chickens Starved: " + deathsToHunger;
+    }
+    public void chickenBirth()
+    {
+        births++;
+        birthsTxt.text = "Births: " + births;
     }
     IEnumerator timeCountUp()
     {

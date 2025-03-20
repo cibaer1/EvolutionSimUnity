@@ -24,9 +24,9 @@ public class ChickenVision : MonoBehaviour
         if(chickenScript != null)
         {
             
-            if (other.CompareTag("food") && chickenScript.hunger < chickenScript.maxHunger * 0.5f)
+            if (other.CompareTag("food") && chickenScript.hunger < chickenScript.maxHunger * 0.2f)
             {
-                Debug.Log("r");
+                //Debug.Log("r");
                 chickenScript.foodSpotted = true;
                 chickenScript.foodTrans = other.transform;
             }
@@ -40,7 +40,7 @@ public class ChickenVision : MonoBehaviour
                     {
                         chickenScript.foundMate = true;
                         chickenScript.mateTrans = other.transform;
-                        Debug.Log("mateFound");
+                        //Debug.Log("mateFound");
                         other.GetComponent<ChickenAI>().wait = true;
                         other.GetComponent<ChickenAI>().foundMate = true;
                     }

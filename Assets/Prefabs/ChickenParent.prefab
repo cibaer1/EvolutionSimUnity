@@ -142,14 +142,14 @@ MonoBehaviour:
   hungerGainOnEat: 6
   hungerConsumption: 0.7
   speed: 4
-  birthWait: 2
+  birthWait: 3
   maxAge: 70
   birthCooldown: 0
   foodTrans: {fileID: 0}
   foodSpotted: 0
   ableToBirth: 0
   births: 0
-  maxBirths: 7
+  maxBirths: 10
   visionScript: {fileID: 1213534986552423788}
   geneMutationChance: 15
   chickenClone: {fileID: 276753730684159332}
